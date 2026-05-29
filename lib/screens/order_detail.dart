@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tiktok/widgets/bottom_action_bar.dart';
 import 'package:tiktok/widgets/order_status_card.dart';
+import 'package:tiktok/widgets/ad_manager_integration_card.dart';
 import 'package:tiktok/widgets/promotion_result_card.dart';
 import 'package:tiktok/widgets/content_analysis_card.dart';
 import 'package:tiktok/widgets/audience_insight_card.dart';
@@ -71,7 +72,6 @@ class _OrderDetailState extends State<OrderDetail> {
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
             color: Color(0xFF161823),
-            fontFamily: 'Inter',
           ),
         ),
         actions: [
@@ -82,16 +82,43 @@ class _OrderDetailState extends State<OrderDetail> {
             child: Center(
               child: Container(
                 margin: const EdgeInsets.only(right: 16.0), // Padding to match right edge
-                width: 28,
-                height: 28,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: ClipOval(
-                  child: Image.asset(
-                    'assets/images/user.png',
-                    fit: BoxFit.fill,
-                  ),
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Container(
+                      width: 26,
+                      height: 26,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                      ),
+                      child: ClipOval(
+                        child: Image.asset(
+                          'assets/images/user.png',
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return const Icon(
+                              Icons.person_outlined,
+                              color: Color(0xFF161823),
+                              size: 26,
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    // Red Notification Badge Dot matching screenshot
+                    Positioned(
+                      top: -2,
+                      right: -2,
+                      child: Container(
+                        width: 8,
+                        height: 8,
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFFE2C55), // Vibrant TikTok notification red
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -123,7 +150,6 @@ class _OrderDetailState extends State<OrderDetail> {
                 fontSize: 13.0,
                 color: Color(0xFF86878B),
                 fontWeight: FontWeight.w400,
-                fontFamily: 'Inter',
               ),
             ),
           ),
@@ -139,6 +165,8 @@ class _OrderDetailState extends State<OrderDetail> {
                   child: Column(
                     children: const [
                       OrderStatusCard(),
+                      SizedBox(height: 12),
+                      AdManagerIntegrationCard(),
                       SizedBox(height: 12),
                       PromotionResultCard(),
                       SizedBox(height: 12),

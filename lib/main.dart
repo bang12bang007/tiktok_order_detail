@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok/theme/app_font.dart';
 import 'package:tiktok/screens/order_detail.dart';
 
 void main() {
@@ -18,8 +19,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xFFFE2C55), // Brand primary
         ),
-        // Configure standard sans-serif system fonts
-        fontFamily: 'Inter',
+        // Configure standard TikTok Sans custom font
+        fontFamily: AppFont.sans,
         scaffoldBackgroundColor: const Color(0xFFF8F8F8),
       ),
       home: const OrderDetail(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tiktok/theme/app_font.dart';
 
 class OrderStatusCard extends StatefulWidget {
   const OrderStatusCard({super.key});
@@ -14,6 +15,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
   @override
   Widget build(BuildContext context) {
     final String isImage = '';
+    final  bool isColumn = true ; // chỉnh thành false nếu e muốn hiển thị ngang
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -37,6 +39,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
             'Lệnh Quảng bá của bạn thu được 2.854 người xem LIVE. Nội dung của bạn vẫn có thể thu được lưu lượng truy cập tự nhiên ngay cả sau khi lệnh Quảng bá kết thúc.',
             style: TextStyle(
               fontSize: 15.8,
+              fontFamily: AppFont.display,
               color: Color(0xFF5E6064), // Darker, highly readable grey
               height: 1.4,
             ),
@@ -46,7 +49,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
           const SizedBox(height: 16),
 
           // Video section row (Thumbnail on the left, multi-line details on the right)
-          Row(
+          isColumn == true ? Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
@@ -59,51 +62,95 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                 ),
               ),
               const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Lets Go LIVE!',
-                      style: TextStyle(
-                        fontSize: 15.4,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF161823),
-                      ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text(
+                    'Lets Go LIVE!',
+                    style: TextStyle(
+                      fontSize: 15.4,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF161823),
                     ),
-                    SizedBox(height: 1),
-                    Text(
-                      'LIVE của Hạ Vy Nè',
-                      style: TextStyle(
-                        fontSize: 15.4,
-                        color: Color(0xFF86878B),
-                      ),
+                  ),
+                  SizedBox(height: 1),
+                  Text(
+                    'LIVE của Hạ Vy Nè',
+                    style: TextStyle(
+                      fontSize: 15.4,
+                      fontFamily: AppFont.sans,
+                      color: Color(0xFF86878B),
                     ),
-                    SizedBox(height: 2),
-                    Text(
-                      'Tăng số người xem LIVE',
-                      style: TextStyle(
-                        fontSize: 15.4,
-                        color: Color(0xFF86878B),
-                      ),
+                  ),
+                  SizedBox(height: 2),
+                  Text(
+                    'Tăng số người xem LIVE',
+                    style: TextStyle(
+                      fontSize: 15.4,
+                      fontFamily: AppFont.sans,
+                      color: Color(0xFF86878B),
                     ),
-                  ],
+                  ),
+                ],
+              ),
+            ],
+          ) :Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+
+               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text(
+                    'Lets Go LIVE!',
+                    style: TextStyle(
+                      fontSize: 15.4,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF161823),
+                    ),
+                  ),
+                  Text(
+                    'LIVE của Hạ Vy Nè',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: AppFont.sans,
+                      color: Color(0xFF86878B),
+                    ),
+                  ),
+                  SizedBox(height: 2),
+                ],
+              ),
+              Spacer(),
+              Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: ClipOval(
+                  child: Image.asset(
+                    isImage == ''
+                        ? 'assets/images/cicrle_ava.jpg'
+                        : isImage,
+                    width: 40,
+                    height: 40,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
+
             ],
           ),
 
           // Expandable rows (All campaign details are hidden initially and revealed upon tapping "Xem thêm")
           if (_isExpanded) ...[
             const SizedBox(height: 16),
-            
+
             // Khán giả section (with chevron and wrapping text)
             InkWell(
               onTap: () {
                 // Action when tapping on audience
               },
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
                     'Khán giả',
@@ -119,6 +166,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                       'Giới tính: Nam; Tuổi: 18-24, 25-34, 35-44, 45-54; Vị trí: Việt Nam; Sở thích: Đời sống;',
                       textAlign: TextAlign.right,
                       style: TextStyle(
+                        fontFamily: AppFont.sans,
                         fontSize: 15.8,
                         color: Color(0xFF161823),
                         fontWeight: FontWeight.w400,
@@ -141,9 +189,9 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
             const SizedBox(height: 15),
             _buildInfoRow('Thời gian đặt hàng', '30 tháng năm 2026 03:22'),
             const SizedBox(height: 15),
-            _buildInfoRow('Tổng thời lượng', '0.5giờ/0.5giờ'),
+            _buildInfoRow('Tổng thời lượng', '0.5giờ / 0.5giờ'),
             const SizedBox(height: 15),
-            _buildRequestIDRow('ID Yêu cầu', '1735321347818590'),
+            _buildRequestIDRow('ID Yêu cầu', '1976200362748037'),
             const SizedBox(height: 15),
             _buildInfoRow('Tổng ngân sách', '200\$'),
           ],
