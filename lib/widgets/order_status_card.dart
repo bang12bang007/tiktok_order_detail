@@ -13,6 +13,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
 
   @override
   Widget build(BuildContext context) {
+    final String isImage = '';
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -33,9 +34,9 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
           ),
           const SizedBox(height: 12),
           const Text(
-            'Lệnh Quảng bá của bạn thu được 158.280 người xem LIVE. Nội dung của bạn vẫn có thể thu được lưu lượng truy cập tự nhiên ngay cả sau khi lệnh Quảng bá kết thúc.',
+            'Lệnh Quảng bá của bạn thu được 2.854 người xem LIVE. Nội dung của bạn vẫn có thể thu được lưu lượng truy cập tự nhiên ngay cả sau khi lệnh Quảng bá kết thúc.',
             style: TextStyle(
-              fontSize: 14.0,
+              fontSize: 15.8,
               color: Color(0xFF5E6064), // Darker, highly readable grey
               height: 1.4,
             ),
@@ -51,7 +52,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(4.0),
                 child: Image.asset(
-                  'assets/images/ha_vy_ne.jpg',
+                  isImage == '' ? 'assets/images/avt_chamhoi.jpg' : isImage,
                   width: 48,
                   height: 68,
                   fit: BoxFit.cover,
@@ -65,7 +66,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                     Text(
                       'Lets Go LIVE!',
                       style: TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 15.4,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF161823),
                       ),
@@ -74,7 +75,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                     Text(
                       'LIVE của Hạ Vy Nè',
                       style: TextStyle(
-                        fontSize: 13.5,
+                        fontSize: 15.4,
                         color: Color(0xFF86878B),
                       ),
                     ),
@@ -82,7 +83,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                     Text(
                       'Tăng số người xem LIVE',
                       style: TextStyle(
-                        fontSize: 13.5,
+                        fontSize: 15.4,
                         color: Color(0xFF86878B),
                       ),
                     ),
@@ -107,7 +108,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                   const Text(
                     'Khán giả',
                     style: TextStyle(
-                      fontSize: 15.5,
+                      fontSize: 16,
                       color: Color(0xFF86878B),
                       fontWeight: FontWeight.w400,
                     ),
@@ -115,12 +116,12 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                   const SizedBox(width: 24),
                   const Expanded(
                     child: Text(
-                      'Giới tính: Nam; Tuổi: 13-17, 18-24, 25-34, 35-44, 45-54; Vị trí: Việt Nam; Sở thích: Trò chơi;',
+                      'Giới tính: Nam; Tuổi: 18-24, 25-34, 35-44, 45-54; Vị trí: Việt Nam; Sở thích: Đời sống;',
                       textAlign: TextAlign.right,
                       style: TextStyle(
-                        fontSize: 15.5,
+                        fontSize: 15.8,
                         color: Color(0xFF161823),
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w400,
                         height: 1.3,
                       ),
                     ),
@@ -137,13 +138,13 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                 ],
               ),
             ),
-            const SizedBox(height: 16),
-            _buildInfoRow('Thời gian đặt hàng', '27 tháng năm 2026 23:31'),
-            const SizedBox(height: 16),
-            _buildInfoRow('Tổng thời lượng', '0.5giờ / 0.5giờ'),
-            const SizedBox(height: 16),
-            _buildRequestIDRow('ID Yêu cầu', '1866236927581202'),
-            const SizedBox(height: 16),
+            const SizedBox(height: 15),
+            _buildInfoRow('Thời gian đặt hàng', '30 tháng năm 2026 03:22'),
+            const SizedBox(height: 15),
+            _buildInfoRow('Tổng thời lượng', '0.5giờ/0.5giờ'),
+            const SizedBox(height: 15),
+            _buildRequestIDRow('ID Yêu cầu', '1735321347818590'),
+            const SizedBox(height: 15),
             _buildInfoRow('Tổng ngân sách', '200\$'),
           ],
 
@@ -170,7 +171,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                     Text(
                       _isExpanded ? 'Ẩn bớt' : 'Xem thêm',
                       style: const TextStyle(
-                        fontSize: 14.0,
+                        fontSize: 15.0,
                         fontWeight: FontWeight.w500,
                         color: Color(0xFF86878B),
                       ),
@@ -214,7 +215,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
               style: const TextStyle(
                 fontSize: 15.5,
                 color: Color(0xFF161823),
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w400,
               ),
             ),
             const SizedBox(width: 6),
@@ -250,12 +251,12 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
         Text(
           label,
           style: const TextStyle(
-            fontSize: 15.5,
+            fontSize: 16.4,
             color: Color(0xFF86878B),
             fontWeight: FontWeight.w400,
           ),
         ),
-        const SizedBox(width: 24),
+        const SizedBox(width: 11),
         Expanded(
           child: Text(
             value,
@@ -263,7 +264,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
             style: const TextStyle(
               fontSize: 15.5,
               color: Color(0xFF161823),
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w400,
             ),
           ),
         ),

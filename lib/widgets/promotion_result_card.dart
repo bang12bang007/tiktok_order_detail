@@ -50,13 +50,13 @@ class PromotionResultCard extends StatelessWidget {
                 Text(
                   'Người xem LIVE',
                   style: TextStyle(
-                    fontSize: 13.0,
+                    fontSize: 13.8,
                     color: Color(0xFF86878B),
                   ),
                 ),
                 SizedBox(height: 8),
                 Text(
-                  '3.583',
+                  '2.854',
                   style: TextStyle(
                     fontSize: 26.0,
                     fontWeight: FontWeight.bold,
@@ -75,13 +75,13 @@ class PromotionResultCard extends StatelessWidget {
               Text(
                 'Chi phí quảng cáo',
                 style: TextStyle(
-                  fontSize: 13.0,
+                  fontSize: 13.8,
                   color: Color(0xFF86878B),
                 ),
               ),
               SizedBox(height: 6),
               Text(
-                '193,7\$',
+                '200\$',
                 style: TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold,
@@ -104,9 +104,9 @@ class PromotionResultCard extends StatelessWidget {
               'Số tiền còn lại sẽ được tự động hoàn lại vào số dư Quảng bá của bạn sau khi quảng cáo của bạn kết thúc. Bạn có thể sử dụng số tiền này cho quảng cáo tiếp theo hoặc rút số dư khỏi tài khoản của mình.',
               style: TextStyle(
                 fontSize: 13,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
                 color: Colors.black87, // Very readable and clear dark grey
-                height: 1.4,
+                height: 1.3,
               ),
             ),
           ),
@@ -142,10 +142,10 @@ class PromotionResultCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: _buildInfoColumn('Những Follower mới', '41'),
+                child: _buildInfoColumn('Những Follower mới', '34'),
               ),
               Expanded(
-                child: _buildInfoColumn('Thích', '883'),
+                child: _buildInfoColumn('Thích', '5091'),
               ),
             ],
           ),
@@ -154,10 +154,10 @@ class PromotionResultCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: _buildInfoColumn('Lượt bình luận', '35'),
+                child: _buildInfoColumn('Lượt bình luận', '47'),
               ),
               Expanded(
-                child: _buildInfoColumn('Lượt chia sẻ', '5'),
+                child: _buildInfoColumn('Lượt chia sẻ', '31'),
               ),
             ],
           ),
@@ -195,10 +195,10 @@ class PromotionResultCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: _buildInfoColumn('Số lượt hiển thị của phiên LIVE', '14.472'),
+                child: _buildInfoColumn('Số lượt hiển thị của phiên LIVE', '10.631'),
               ),
               Expanded(
-                child: _buildInfoColumn('Thời gian xem trung bình', '45,8giây'),
+                child: _buildInfoColumn('  Thời gian xem trung bình', ' 3,8 giây'),
               ),
             ],
           ),
@@ -215,9 +215,9 @@ class PromotionResultCard extends StatelessWidget {
         Text(
           label,
           style: const TextStyle(
-            fontSize: 15.5,
+            fontSize: 14.1,
             color: Color(0xFF86878B),
-            height: 1.3,
+            height: 1.2,
           ),
         ),
         const SizedBox(height: 6),
@@ -225,7 +225,7 @@ class PromotionResultCard extends StatelessWidget {
           value,
           style: const TextStyle(
             fontSize: 20.0,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w700,
             color: Color(0xFF161823),
           ),
         ),

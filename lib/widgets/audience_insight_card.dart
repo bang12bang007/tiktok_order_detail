@@ -175,11 +175,11 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
           ] else if (_activeTab == 'Tuổi') ...[
             // Age vertical horizontal bars list
             const SizedBox(height: 12),
-            _buildHorizontalProgressBarRow('13-17', 0.14),
+            _buildHorizontalProgressBarRow('13-17', 0.34),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow('18-24', 0.30),
+            _buildHorizontalProgressBarRow('18-24', 0.20),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow('25-34', 0.37),
+            _buildHorizontalProgressBarRow('25-34', 0.17),
             const SizedBox(height: 16),
             _buildHorizontalProgressBarRow('35-44', 0.14),
             const SizedBox(height: 16),

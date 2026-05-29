@@ -40,7 +40,7 @@ class BottomActionBar extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              child: const Text('Quảng bá lại'),
+              child: const Text('Quảng bá lại '),
             ),
           ),
         ),
