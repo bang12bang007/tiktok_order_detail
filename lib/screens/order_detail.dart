@@ -111,8 +111,8 @@ class _OrderDetailState extends State<OrderDetail> {
                       top: -2,
                       right: -2,
                       child: Container(
-                        width: 8,
-                        height: 8,
+                        width: 6,
+                        height: 6,
                         decoration: const BoxDecoration(
                           color: const Color(0xFFFE2C55), // Vibrant TikTok notification red
                           shape: BoxShape.circle,
@@ -166,8 +166,9 @@ class _OrderDetailState extends State<OrderDetail> {
                   child: Column(
                     children: const [
                       OrderStatusCard(),
-                      SizedBox(height: 12),
-                      AdManagerIntegrationCard(),
+                      // 2 dòng trên này nha :v
+                      // SizedBox(height: 12),
+                      // AdManagerIntegrationCard(),
                       SizedBox(height: 12),
                       PromotionResultCard(),
                       SizedBox(height: 12),
