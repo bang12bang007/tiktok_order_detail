@@ -14,38 +14,45 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+    final Color textColor = isDark ? Colors.white : const Color(0xFF161823);
+    final Color subTextColor = isDark ? const Color(0xFF8E8E93) : const Color(0xFF86878B);
+    final Color descriptionColor = isDark ? const Color(0xFF8E8E93) : const Color(0xFF5E6064);
+    final Color dividerColor = isDark ? const Color(0xFF2C2C2E) : const Color(0xFFF1F1F3);
+    
     final String isImage = '';
-    final  bool isColumn = true ; // chỉnh thành false nếu e muốn hiển thị ngang
+    final bool isColumn = true; // chỉnh thành false nếu e muốn hiển thị ngang
+    
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(12.0),
       ),
       padding: const EdgeInsets.fromLTRB(16.0, 20.0, 16.0, 12.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Đã đóng',
             style: TextStyle(
               fontSize: 22.0,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF161823), // TikTok dark black text
+              color: textColor, // TikTok dark black text
             ),
           ),
           const SizedBox(height: 12),
-          const Text(
+          Text(
             'Lệnh Quảng bá của bạn thu được 2.854 người xem LIVE. Nội dung của bạn vẫn có thể thu được lưu lượng truy cập tự nhiên ngay cả sau khi lệnh Quảng bá kết thúc.',
             style: TextStyle(
               fontSize: 15.8,
               fontFamily: AppFont.display,
-              color: Color(0xFF5E6064), // Darker, highly readable grey
+              color: descriptionColor, // Darker, highly readable grey
               height: 1.4,
             ),
           ),
           const SizedBox(height: 16),
-          const Divider(color: Color(0xFFF1F1F3), thickness: 1.0, height: 1.0),
+          Divider(color: dividerColor, thickness: 1.0, height: 1.0),
           const SizedBox(height: 16),
 
           // Video section row (Thumbnail on the left, multi-line details on the right)
@@ -64,49 +71,48 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
               const SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     'Lets Go LIVE!',
                     style: TextStyle(
                       fontSize: 15.4,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF161823),
+                      color: textColor,
                     ),
                   ),
-                  SizedBox(height: 1),
+                  const SizedBox(height: 1),
                   Text(
                     'LIVE của Hạ Vy Nè',
                     style: TextStyle(
                       fontSize: 15.4,
                       fontFamily: AppFont.sans,
-                      color: Color(0xFF86878B),
+                      color: subTextColor,
                     ),
                   ),
-                  SizedBox(height: 2),
+                  const SizedBox(height: 2),
                   Text(
                     'Tăng số người xem LIVE',
                     style: TextStyle(
                       fontSize: 15.4,
                       fontFamily: AppFont.sans,
-                      color: Color(0xFF86878B),
+                      color: subTextColor,
                     ),
                   ),
                 ],
               ),
             ],
-          ) :Row(
+          ) : Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
-               Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     'Lets Go LIVE!',
                     style: TextStyle(
                       fontSize: 15.4,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF161823),
+                      color: textColor,
                     ),
                   ),
                   Text(
@@ -114,13 +120,13 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                     style: TextStyle(
                       fontSize: 14,
                       fontFamily: AppFont.sans,
-                      color: Color(0xFF86878B),
+                      color: subTextColor,
                     ),
                   ),
-                  SizedBox(height: 2),
+                  const SizedBox(height: 2),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Container(
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
@@ -136,7 +142,6 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                   ),
                 ),
               ),
-
             ],
           ),
 
@@ -152,35 +157,35 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     'Khán giả',
                     style: TextStyle(
                       fontSize: 16,
-                      color: Color(0xFF86878B),
+                      color: subTextColor,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                   const SizedBox(width: 24),
-                  const Expanded(
+                  Expanded(
                     child: Text(
                       'Giới tính: Nam; Tuổi: 18-24, 25-34, 35-44, 45-54; Vị trí: Việt Nam; Sở thích: Đời sống;',
                       textAlign: TextAlign.right,
                       style: TextStyle(
                         fontFamily: AppFont.sans,
                         fontSize: 15.8,
-                        color: Color(0xFF161823),
+                        color: textColor,
                         fontWeight: FontWeight.w400,
                         height: 1.3,
                       ),
                     ),
                   ),
                   const SizedBox(width: 4),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 2.0),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 2.0),
                     child: Icon(
                       Icons.arrow_forward_ios,
                       size: 12,
-                      color: Color(0xFF86878B),
+                      color: subTextColor,
                     ),
                   ),
                 ],
@@ -197,7 +202,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
           ],
 
           const SizedBox(height: 12),
-          const Divider(color: Color(0xFFF1F1F3), thickness: 1.0, height: 1.0),
+          Divider(color: dividerColor, thickness: 1.0, height: 1.0),
           const SizedBox(height: 8),
 
           // Xem thêm button
@@ -218,10 +223,10 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                   children: [
                     Text(
                       _isExpanded ? 'Ẩn bớt' : 'Xem thêm',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 15.0,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF86878B),
+                        color: subTextColor,
                       ),
                     ),
                     const SizedBox(width: 4),
@@ -230,7 +235,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                           ? Icons.keyboard_arrow_up
                           : Icons.keyboard_arrow_down,
                       size: 20,
-                      color: const Color(0xFF86878B),
+                      color: subTextColor,
                     ),
                   ],
                 ),
@@ -243,15 +248,19 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
   }
 
   Widget _buildRequestIDRow(String label, String value) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+    final Color textColor = isDark ? Colors.white : const Color(0xFF161823);
+    final Color subTextColor = isDark ? const Color(0xFF8E8E93) : const Color(0xFF86878B);
+    
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 15.5,
-            color: Color(0xFF86878B),
+            color: subTextColor,
           ),
         ),
         const SizedBox(width: 24),
@@ -260,9 +269,9 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
           children: [
             Text(
               value,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 15.5,
-                color: Color(0xFF161823),
+                color: textColor,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -279,10 +288,10 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                   ),
                 );
               },
-              child: const Icon(
+              child: Icon(
                 Icons.copy,
                 size: 14,
-                color: Colors.black,
+                color: isDark ? const Color(0xFF8E8E93) : Colors.black,
               ),
             ),
           ],
@@ -292,15 +301,19 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
   }
 
   Widget _buildInfoRow(String label, String value) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+    final Color textColor = isDark ? Colors.white : const Color(0xFF161823);
+    final Color subTextColor = isDark ? const Color(0xFF8E8E93) : const Color(0xFF86878B);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16.4,
-            color: Color(0xFF86878B),
+            color: subTextColor,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -309,9 +322,9 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
           child: Text(
             value,
             textAlign: TextAlign.right,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 15.5,
-              color: Color(0xFF161823),
+              color: textColor,
               fontWeight: FontWeight.w400,
             ),
           ),

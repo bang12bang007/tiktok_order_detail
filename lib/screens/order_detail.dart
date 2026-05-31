@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tiktok/widgets/bottom_action_bar.dart';
 import 'package:tiktok/widgets/order_status_card.dart';
 import 'package:tiktok/widgets/ad_manager_integration_card.dart';
 import 'package:tiktok/widgets/promotion_result_card.dart';
-import 'package:tiktok/widgets/content_analysis_card.dart';
 import 'package:tiktok/widgets/audience_insight_card.dart';
 import 'package:tiktok/widgets/resource_card.dart';
 
@@ -42,36 +42,38 @@ class _OrderDetailState extends State<OrderDetail> {
 
   @override
   Widget build(BuildContext context) {
-    // Set status bar to dark icons on transparent background for Android/iOS matching
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+    
+    // Set status bar to adapt to light/dark themes
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-      statusBarBrightness: Brightness.light,
+      statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+      statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
     ));
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F8F8), // TikTok page background light grey
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).cardColor,
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.arrow_back_ios_new,
-            color: Color(0xFF161823),
+            color: isDark ? Colors.white : const Color(0xFF161823),
             size: 20,
           ),
           onPressed: () {
             // Action to go back
           },
         ),
-        title: const Text(
+        title: Text(
           'Chi tiết đơn hàng',
           style: TextStyle(
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF161823),
+            color: isDark ? Colors.white : const Color(0xFF161823),
           ),
         ),
         actions: [
@@ -92,16 +94,15 @@ class _OrderDetailState extends State<OrderDetail> {
                         shape: BoxShape.circle,
                       ),
                       child: ClipOval(
-                        child: Image.asset(
-                          'assets/images/user.png',
+                        child: SvgPicture.asset(
+                          'assets/svg/ic_user.svg',
+                          colorFilter: ColorFilter.mode(
+                            isDark ? Colors.white : const Color(0xFF161823),
+                            BlendMode.srcIn,
+                          ),
                           fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            return const Icon(
-                              Icons.person_outlined,
-                              color: Color(0xFF161823),
-                              size: 26,
-                            );
-                          },
+                          width: 26,
+                          height: 26,
                         ),
                       ),
                     ),
@@ -113,7 +114,7 @@ class _OrderDetailState extends State<OrderDetail> {
                         width: 8,
                         height: 8,
                         decoration: const BoxDecoration(
-                          color: Color(0xFFFE2C55), // Vibrant TikTok notification red
+                          color: const Color(0xFFFE2C55), // Vibrant TikTok notification red
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -128,7 +129,7 @@ class _OrderDetailState extends State<OrderDetail> {
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1.0),
           child: Container(
-            color: const Color(0xFFF1F1F3),
+            color: isDark ? const Color(0xFF2C2C2E) : const Color(0xFFF1F1F3),
             height: 1.0,
           ),
         ),

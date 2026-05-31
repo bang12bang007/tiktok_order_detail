@@ -5,10 +5,14 @@ class AdManagerIntegrationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+    final Color textColor = isDark ? Colors.white : const Color(0xFF161823);
+    final Color descriptionColor = isDark ? const Color(0xFF8E8E93) : const Color(0xFF5E6064);
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(12.0),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
@@ -16,22 +20,22 @@ class AdManagerIntegrationCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Bold Title
-          const Text(
+          Text(
             'Tích hợp với Trình quản lý Quảng cáo',
             style: TextStyle(
               fontSize: 16.0,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF161823),
+              color: textColor,
             ),
           ),
           const SizedBox(height: 10),
 
           // Subtitle / Description
-          const Text(
+          Text(
             'Mở khóa các chức năng nhắm mục tiêu mở rộng và tiết kiệm thời gian chỉ bằng một lần đăng nhập.',
             style: TextStyle(
               fontSize: 14.0,
-              color: Color(0xFF5E6064), // Crisp, readable grey color
+              color: descriptionColor, // Crisp, readable grey color
               height: 1.4,
             ),
           ),

@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok/main.dart';
 
 class BottomActionBar extends StatelessWidget {
   const BottomActionBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+    
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? const Color(0xFF1D1F24) : Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: isDark ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.04),
             offset: const Offset(0, -4),
             blurRadius: 10,
           ),
         ],
-        border: const Border(
-          top: BorderSide(color: Color(0xFFF1F1F3), width: 1.0),
+        border: Border(
+          top: BorderSide(
+            color: isDark ? const Color(0xFF2C2C2E) : const Color(0xFFF1F1F3), 
+            width: 1.0,
+          ),
         ),
       ),
       child: SafeArea(
@@ -27,7 +33,10 @@ class BottomActionBar extends StatelessWidget {
             width: double.infinity,
             height: 48,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                // Toggle between Dark and Light Mode dynamically
+                MyApp.of(context)?.toggleTheme();
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFFE2C55),
                 foregroundColor: Colors.white,
@@ -40,7 +49,7 @@ class BottomActionBar extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              child: const Text('Quảng bá lại '),
+              child: const Text('Quảng bá lại'),
             ),
           ),
         ),

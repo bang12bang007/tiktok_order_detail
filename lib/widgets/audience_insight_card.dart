@@ -41,10 +41,15 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
 
   @override
   Widget build(BuildContext context) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+    final Color textColor = isDark ? Colors.white : const Color(0xFF161823);
+    final Color subTextColor = isDark ? const Color(0xFF8E8E93) : const Color(0xFF86878B);
+    final Color dividerColor = isDark ? const Color(0xFF2C2C2E) : const Color(0xFFF1F1F3);
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(12.0),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
@@ -52,12 +57,12 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Title
-          const Text(
+          Text(
             'Thông tin chuyên sâu về đối tượng khán giả',
             style: TextStyle(
               fontSize: 16.0,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF161823),
+              color: textColor,
             ),
           ),
           const SizedBox(height: 16),
@@ -66,7 +71,7 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: _tabs.map((tab) => _buildTabItem(tab)).toList(),
+              children: _tabs.map((tab) => _buildTabItem(context, tab)).toList(),
             ),
           ),
           const SizedBox(height: 24),
@@ -101,12 +106,12 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
                 // Nam (Male) Column
                 Column(
                   children: [
-                    const Text(
+                    Text(
                       '100%',
                       style: TextStyle(
                         fontSize: 22.0,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF161823),
+                        color: textColor,
                       ),
                     ),
                     const SizedBox(height: 6),
@@ -122,11 +127,11 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
                           ),
                         ),
                         const SizedBox(width: 6),
-                        const Text(
+                        Text(
                           'Nam',
                           style: TextStyle(
                             fontSize: 12.0,
-                            color: Color(0xFF86878B),
+                            color: subTextColor,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -137,12 +142,12 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
                 // Nữ (Female) Column
                 Column(
                   children: [
-                    const Text(
+                    Text(
                       '0%',
                       style: TextStyle(
                         fontSize: 22.0,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF161823),
+                        color: textColor,
                       ),
                     ),
                     const SizedBox(height: 6),
@@ -158,11 +163,11 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
                           ),
                         ),
                         const SizedBox(width: 6),
-                        const Text(
+                        Text(
                           'Nữ',
                           style: TextStyle(
                             fontSize: 12.0,
-                            color: Color(0xFF86878B),
+                            color: subTextColor,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -175,31 +180,31 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
           ] else if (_activeTab == 'Tuổi') ...[
             // Age vertical horizontal bars list
             const SizedBox(height: 12),
-            _buildHorizontalProgressBarRow('13-17', 0.34),
+            _buildHorizontalProgressBarRow(context, '13-17', 0.34),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow('18-24', 0.20),
+            _buildHorizontalProgressBarRow(context, '18-24', 0.20),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow('25-34', 0.17),
+            _buildHorizontalProgressBarRow(context, '25-34', 0.17),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow('35-44', 0.14),
+            _buildHorizontalProgressBarRow(context, '35-44', 0.14),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow('45-54', 0.05),
+            _buildHorizontalProgressBarRow(context, '45-54', 0.05),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow('55+', 0.00),
+            _buildHorizontalProgressBarRow(context, '55+', 0.00),
           ] else if (_activeTab == 'Mối quan tâm') ...[
             // Interests vertical list
             const SizedBox(height: 12),
-            _buildHorizontalProgressBarRow('Trò chơi', 0.06),
+            _buildHorizontalProgressBarRow(context, 'Trò chơi', 0.06),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow('Tin tức và Giải trí', 0.06),
+            _buildHorizontalProgressBarRow(context, 'Tin tức và Giải trí', 0.06),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow('Thực phẩm và Đồ uống', 0.06),
+            _buildHorizontalProgressBarRow(context, 'Thực phẩm và Đồ uống', 0.06),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow('Các ứng dụng', 0.06),
+            _buildHorizontalProgressBarRow(context, 'Các ứng dụng', 0.06),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow('Trang phục & Phụ kiện', 0.06),
+            _buildHorizontalProgressBarRow(context, 'Trang phục & Phụ kiện', 0.06),
             const SizedBox(height: 20),
-            const Divider(color: Color(0xFFF1F1F3), thickness: 1.0, height: 1.0),
+            Divider(color: dividerColor, thickness: 1.0, height: 1.0),
             const SizedBox(height: 12),
             // Center "Xem thêm ⋁" button
             Center(
@@ -211,20 +216,20 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
                   padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
-                    children: const [
+                    children: [
                       Text(
                         'Xem thêm',
                         style: TextStyle(
                           fontSize: 12.0,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF86878B),
+                          color: subTextColor,
                         ),
                       ),
-                      SizedBox(width: 4),
+                      const SizedBox(width: 4),
                       Icon(
                         Icons.keyboard_arrow_down,
                         size: 14,
-                        color: Color(0xFF86878B),
+                        color: subTextColor,
                       ),
                     ],
                   ),
@@ -237,8 +242,12 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
     );
   }
 
-  Widget _buildHorizontalProgressBarRow(String label, double percentage) {
+  Widget _buildHorizontalProgressBarRow(BuildContext context, String label, double percentage) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+    final Color textColor = isDark ? Colors.white : const Color(0xFF161823);
+    final Color barBgColor = isDark ? const Color(0xFF2C2C2E) : const Color(0xFFF1F1F3);
     final int displayPercentage = (percentage * 100).round();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -248,18 +257,18 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
           children: [
             Text(
               label,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 14.0,
-                color: Color(0xFF161823), // Black text
+                color: textColor, // Black/White text
                 fontWeight: FontWeight.w400,
               ),
             ),
             Text(
               '$displayPercentage%',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 14.0,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF161823),
+                color: textColor,
               ),
             ),
           ],
@@ -270,7 +279,7 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
           width: double.infinity,
           height: 8.0,
           decoration: BoxDecoration(
-            color: const Color(0xFFF1F1F3), // Light grey background bar
+            color: barBgColor, // Light grey/dark background bar
             borderRadius: BorderRadius.circular(4.0),
           ),
           alignment: Alignment.centerLeft,
@@ -289,7 +298,8 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
     );
   }
 
-  Widget _buildTabItem(String tabName) {
+  Widget _buildTabItem(BuildContext context, String tabName) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
     final bool isActive = _activeTab == tabName;
     return GestureDetector(
       onTap: () {
@@ -305,10 +315,12 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
       child: Container(
         margin: const EdgeInsets.only(right: 8.0),
         decoration: BoxDecoration(
-          color: isActive ? Colors.white : const Color(0xFFF1F1F3),
+          color: isActive
+              ? (isDark ? const Color(0xFF1D1F24) : Colors.white)
+              : (isDark ? const Color(0xFF252629) : const Color(0xFFF1F1F3)),
           borderRadius: BorderRadius.circular(4.0),
           border: isActive
-              ? Border.all(color: const Color(0xFF161823), width: 1.0)
+              ? Border.all(color: isDark ? Colors.white : const Color(0xFF161823), width: 1.0)
               : null,
         ),
         padding: const EdgeInsets.all(6),
@@ -317,7 +329,9 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
           style: TextStyle(
             fontSize: 12.0,
             fontWeight: isActive ? FontWeight.bold : FontWeight.w500,
-            color: isActive ? const Color(0xFF161823) : const Color(0xFF86878B),
+            color: isActive
+                ? (isDark ? Colors.white : const Color(0xFF161823))
+                : (isDark ? const Color(0xFF8E8E93) : const Color(0xFF86878B)),
           ),
         ),
       ),
