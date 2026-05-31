@@ -14,8 +14,9 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
 
   @override
   Widget build(BuildContext context) {
-    final String isImage = '';
-    final  bool isColumn = true ; // chỉnh thành false nếu e muốn hiển thị ngang
+    final String isImage = ''; // bên phải em add ảnh vào link này vào cái này nếu không em để '' kiểu này thì avt tự động set default
+    final bool isRight =
+        true; // chỉnh thành false khi avatar nằm bên phải true thì ngược lại
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -36,9 +37,9 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
           ),
           const SizedBox(height: 12),
           const Text(
-            'Lệnh Quảng bá của bạn thu được 2.854 người xem LIVE. Nội dung của bạn vẫn có thể thu được lưu lượng truy cập tự nhiên ngay cả sau khi lệnh Quảng bá kết thúc.',
+            'Lệnh Quảng bá của bạn thu được 2.873 người xem LIVE. Nội dung của bạn vẫn có thể thu được lưu lượng truy cập tự nhiên ngay cả sau khi lệnh Quảng bá kết thúc.',
             style: TextStyle(
-              fontSize: 15.8,
+              fontSize: 15.9,
               fontFamily: AppFont.display,
               color: Color(0xFF5E6064), // Darker, highly readable grey
               height: 1.4,
@@ -49,96 +50,96 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
           const SizedBox(height: 16),
 
           // Video section row (Thumbnail on the left, multi-line details on the right)
-          isColumn == true ? Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(4.0),
-                child: Image.asset(
-                  isImage == '' ? 'assets/images/avt_chamhoi.jpg' : isImage,
-                  width: 48,
-                  height: 68,
-                  fit: BoxFit.cover,
+          isRight == true
+              ? Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(4.0),
+                      child: Image.asset(
+                        isImage == ''
+                            ? 'assets/images/avt_chamhoi.jpg' // avt bên trái
+                            : isImage,
+                        width: 48,
+                        height: 68,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          'Lets Go LIVE!',
+                          style: TextStyle(
+                            fontSize: 15.4,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF161823),
+                          ),
+                        ),
+                        SizedBox(height: 1),
+                        Text(
+                          'LIVE của Hạ Vy Nè',
+                          style: TextStyle(
+                            fontSize: 15.4,
+                            fontFamily: AppFont.sans,
+                            color: Color(0xFF86878B),
+                          ),
+                        ),
+                        SizedBox(height: 2),
+                        Text(
+                          'Tăng số người xem LIVE',
+                          style: TextStyle(
+                            fontSize: 15.4,
+                            fontFamily: AppFont.sans,
+                            color: Color(0xFF86878B),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+              : Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          'Lets Go LIVE!',
+                          style: TextStyle(
+                            fontSize: 15.4,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF161823),
+                          ),
+                        ),
+                        Text(
+                          'LIVE của Hạ Vy Nè', //bên phải
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontFamily: AppFont.sans,
+                            color: Color(0xFF86878B),
+                          ),
+                        ),
+                        SizedBox(height: 2),
+                      ],
+                    ),
+                    Spacer(),
+                    Container(
+                      decoration: const BoxDecoration(shape: BoxShape.circle),
+                      child: ClipOval(
+                        child: Image.asset(
+                          isImage == ''
+                              ? 'assets/images/cicrle_ava.jpg' //bên phải
+                              : isImage,
+                          width: 40,
+                          height: 40,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(width: 12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Lets Go LIVE!',
-                    style: TextStyle(
-                      fontSize: 15.4,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF161823),
-                    ),
-                  ),
-                  SizedBox(height: 1),
-                  Text(
-                    'LIVE của Hạ Vy Nè',
-                    style: TextStyle(
-                      fontSize: 15.4,
-                      fontFamily: AppFont.sans,
-                      color: Color(0xFF86878B),
-                    ),
-                  ),
-                  SizedBox(height: 2),
-                  Text(
-                    'Tăng số người xem LIVE',
-                    style: TextStyle(
-                      fontSize: 15.4,
-                      fontFamily: AppFont.sans,
-                      color: Color(0xFF86878B),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ) :Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-
-               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Lets Go LIVE!',
-                    style: TextStyle(
-                      fontSize: 15.4,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF161823),
-                    ),
-                  ),
-                  Text(
-                    'LIVE của Hạ Vy Nè',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: AppFont.sans,
-                      color: Color(0xFF86878B),
-                    ),
-                  ),
-                  SizedBox(height: 2),
-                ],
-              ),
-              Spacer(),
-              Container(
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: ClipOval(
-                  child: Image.asset(
-                    isImage == ''
-                        ? 'assets/images/cicrle_ava.jpg'
-                        : isImage,
-                    width: 40,
-                    height: 40,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-
-            ],
-          ),
 
           // Expandable rows (All campaign details are hidden initially and revealed upon tapping "Xem thêm")
           if (_isExpanded) ...[
@@ -187,11 +188,11 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
               ),
             ),
             const SizedBox(height: 15),
-            _buildInfoRow('Thời gian đặt hàng', '30 tháng năm 2026 03:22'),
+            _buildInfoRow('Thời gian đặt hàng', '1 tháng sáu 2026 04:15'),
             const SizedBox(height: 15),
-            _buildInfoRow('Tổng thời lượng', '0.5giờ / 0.5giờ'),
+            _buildInfoRow('Tổng thời lượng', '0.5giờ/0.5giờ'),
             const SizedBox(height: 15),
-            _buildRequestIDRow('ID Yêu cầu', '1976200362748037'),
+            _buildRequestIDRow('ID Yêu cầu', '1699671135054720'),
             const SizedBox(height: 15),
             _buildInfoRow('Tổng ngân sách', '200\$'),
           ],
@@ -249,10 +250,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
       children: [
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 15.5,
-            color: Color(0xFF86878B),
-          ),
+          style: const TextStyle(fontSize: 15.5, color: Color(0xFF86878B)),
         ),
         const SizedBox(width: 24),
         Row(
@@ -279,11 +277,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
                   ),
                 );
               },
-              child: const Icon(
-                Icons.copy,
-                size: 14,
-                color: Colors.black,
-              ),
+              child: const Icon(Icons.copy, size: 14, color: Colors.black),
             ),
           ],
         ),

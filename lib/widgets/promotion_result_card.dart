@@ -23,7 +23,7 @@ class PromotionResultCard extends StatelessWidget {
               Text(
                 'Kết quả quảng bá',
                 style: TextStyle(
-                  fontSize: 16.0,
+                  fontSize: 17.3,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF161823),
                 ),
@@ -35,59 +35,54 @@ class PromotionResultCard extends StatelessWidget {
           const SizedBox(height: 16),
 
           // 1. Full-width light grey box container for "Người xem LIVE" -> "2.775"
-          // Side-by-side layout for Chi phí quảng cáo and Người xem LIVE matching screenshot exactly
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Chi phí quảng cáo',
-                      style: TextStyle(
-                        fontSize: 13.8,
-                        color: Color(0xFF86878B),
-                      ),
-                    ),
-                    SizedBox(height: 6),
-                    Text(
-                      '200\$',
-                      style: TextStyle(
-                        fontSize: 26.0,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF161823),
-                      ),
-                    ),
-                  ],
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: const Color(0xFFF8F8F8),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text(
+                  'Người xem LIVE',
+                  style: TextStyle(fontSize: 14.8, color: Color(0xFF86878B)),
                 ),
+                SizedBox(height: 8),
+                Text(
+                  '2.873',
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF161823),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // 2. Flat layout for "Chi phí quảng cáo" -> "186,8$"
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'Chi phí quảng cáo',
+                style: TextStyle(fontSize: 14.7, color: Color(0xFF86878B)),
               ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Người xem LIVE',
-                      style: TextStyle(
-                        fontSize: 13.8,
-                        color: Color(0xFF86878B),
-                      ),
-                    ),
-                    SizedBox(height: 6),
-                    Text(
-                      '3.780',
-                      style: TextStyle(
-                        fontSize: 26.0,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF161823),
-                      ),
-                    ),
-                  ],
+              SizedBox(height: 6),
+              Text(
+                '200\$',
+                style: TextStyle(
+                  fontSize: 16.6,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF161823),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 16),
 
           // 3. Refund warning notice box
           Container(
@@ -103,11 +98,10 @@ class PromotionResultCard extends StatelessWidget {
             child: const Text(
               'Số tiền còn lại sẽ được tự động hoàn lại vào số dư Quảng bá của bạn sau khi quảng cáo của bạn kết thúc. Bạn có thể sử dụng số tiền này cho quảng cáo tiếp theo hoặc rút số dư khỏi tài khoản của mình.',
               style: TextStyle(
-                fontSize: 14.4,
+                fontSize: 14.0,
                 fontWeight: FontWeight.w500,
-                color: Colors.black87,
-                fontFamily: AppFont.sans,
-                height: 1.3,
+                color: Color(0xFF161823), // Deep TikTok black text
+                height: 1.2,
               ),
             ),
           ),
@@ -121,7 +115,7 @@ class PromotionResultCard extends StatelessWidget {
               Text(
                 'Dữ liệu tương tác',
                 style: TextStyle(
-                  fontSize: 16.0,
+                  fontSize: 17,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF161823),
                 ),
@@ -134,16 +128,16 @@ class PromotionResultCard extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(child: _buildInfoColumn('Những Follower mới', '34')),
-              Expanded(child: _buildInfoColumn('Thích', '5091')),
+              Expanded(child: _buildInfoColumn('Những Follower mới', '30')),
+              Expanded(child: _buildInfoColumn('Thích', '3539')),
             ],
           ),
           const SizedBox(height: 16),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(child: _buildInfoColumn('Lượt bình luận', '47')),
-              Expanded(child: _buildInfoColumn('Lượt chia sẻ', '31')),
+              Expanded(child: _buildInfoColumn('Lượt bình luận', '43')),
+              Expanded(child: _buildInfoColumn('Lượt chia sẻ', '19')),
             ],
           ),
           const SizedBox(height: 20),
@@ -156,7 +150,7 @@ class PromotionResultCard extends StatelessWidget {
               Text(
                 'Dữ liệu LIVE',
                 style: TextStyle(
-                  fontSize: 16.0,
+                  fontSize: 17.3,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF161823),
                 ),
@@ -178,14 +172,14 @@ class PromotionResultCard extends StatelessWidget {
                   children: [
                     Text(
                       'Số Lượt hiển thị của phiên \nLIVE',
-                      style: const TextStyle(fontSize: 14, color: Color(0xFF86878B),fontFamily: AppFont.sans),
+                      style: const TextStyle(fontSize: 14.4, color: Color(0xFF86878B),fontFamily: AppFont.sans),
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      '170.869',
+                      '10.289',
                       style: const TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 16.7,
+                        fontWeight: FontWeight.w500,
                         color: Color(0xFF161823),
                       ),
                     ),
@@ -200,14 +194,14 @@ class PromotionResultCard extends StatelessWidget {
                   children: [
                     Text(
                       '  Thời gian xem trung bình',
-                      style: const TextStyle(fontSize: 13.8, color: Color(0xFF86878B)),
+                      style: const TextStyle(fontSize: 14.8, color: Color(0xFF86878B)),
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      '  5.96 giây',
+                      '  4.2 giây',
                       style: const TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 16.7,
+                        fontWeight: FontWeight.w500,
                         color: Color(0xFF161823),
                       ),
                     ),
@@ -229,7 +223,7 @@ class PromotionResultCard extends StatelessWidget {
         Text(
           label,
           style: const TextStyle(
-            fontSize: 14.1,
+            fontSize: 14.8,
             color: Color(0xFF86878B),
             height: 1.2,
           ),
@@ -238,8 +232,8 @@ class PromotionResultCard extends StatelessWidget {
         Text(
           value,
           style: const TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.w700,
+            fontSize: 16.2,
+            fontWeight: FontWeight.w500,
             color: Color(0xFF161823),
           ),
         ),

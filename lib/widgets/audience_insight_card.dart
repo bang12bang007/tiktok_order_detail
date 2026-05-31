@@ -55,7 +55,7 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
           const Text(
             'Thông tin chuyên sâu về đối tượng khán giả',
             style: TextStyle(
-              fontSize: 16.0,
+              fontSize: 16.5,
               fontWeight: FontWeight.bold,
               color: Color(0xFF161823),
             ),
@@ -102,7 +102,7 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
                 Column(
                   children: [
                     const Text(
-                      '100%',
+                      '100%', //chỉnh % nam nữ
                       style: TextStyle(
                         fontSize: 22.0,
                         fontWeight: FontWeight.bold,
