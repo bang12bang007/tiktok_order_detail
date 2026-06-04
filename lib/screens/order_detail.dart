@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tiktok/widgets/bottom_action_bar.dart';
 import 'package:tiktok/widgets/order_status_card.dart';
-import 'package:tiktok/widgets/ad_manager_integration_card.dart';
 import 'package:tiktok/widgets/promotion_result_card.dart';
 import 'package:tiktok/widgets/audience_insight_card.dart';
 import 'package:tiktok/widgets/resource_card.dart';

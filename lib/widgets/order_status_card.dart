@@ -16,13 +16,19 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
   Widget build(BuildContext context) {
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
     final Color textColor = isDark ? Colors.white : const Color(0xFF161823);
-    final Color subTextColor = isDark ? const Color(0xFF8E8E93) : const Color(0xFF86878B);
-    final Color descriptionColor = isDark ? const Color(0xFF8E8E93) : const Color(0xFF5E6064);
-    final Color dividerColor = isDark ? const Color(0xFF2C2C2E) : const Color(0xFFF1F1F3);
-    
+    final Color subTextColor = isDark
+        ? const Color(0xFF8E8E93)
+        : const Color(0xFF86878B);
+    final Color descriptionColor = isDark
+        ? const Color(0xFF8E8E93)
+        : const Color(0xFF5E6064);
+    final Color dividerColor = isDark
+        ? const Color(0xFF2C2C2E)
+        : const Color(0xFFF1F1F3);
+
     final String isImage = '';
     final bool isColumn = true; // chỉnh thành false nếu e muốn hiển thị ngang
-    
+    final bool isClose = true; // Bật "Không được khởi chạy"
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -34,7 +40,7 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Đã đóng',
+            isClose == true ? 'Không được khởi chạy' : 'Đã đóng',
             style: TextStyle(
               fontSize: 22.0,
               fontWeight: FontWeight.bold,
@@ -42,13 +48,32 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
             ),
           ),
           const SizedBox(height: 12),
-          Text(
-            'Lệnh Quảng bá của bạn thu được 2.854 người xem LIVE. Nội dung của bạn vẫn có thể thu được lưu lượng truy cập tự nhiên ngay cả sau khi lệnh Quảng bá kết thúc.',
-            style: TextStyle(
-              fontSize: 15.8,
-              fontFamily: AppFont.display,
-              color: descriptionColor, // Darker, highly readable grey
-              height: 1.4,
+          RichText(
+            text: TextSpan(
+              style: TextStyle(
+                fontSize: 15.8,
+                fontFamily: AppFont.display,
+                color: descriptionColor, // Darker, highly readable grey
+                height: 1.4,
+              ),
+              children: [
+                if (isClose == true) ...[
+                  const TextSpan(
+                    text: 'Lệnh của bạn không được khởi chạy. ',
+                  ),
+                  TextSpan(
+                    text: 'Đọc thêm',
+                    style: TextStyle(
+                      fontWeight: AppFont.medium,
+                      color: textColor,
+                    ),
+                  ),
+                ] else ...[
+                  const TextSpan(
+                    text: 'Lệnh Quảng bá của bạn thu được 2.854 người xem LIVE. Nội dung của bạn vẫn có thể thu được lưu lượng truy cập tự nhiên ngay cả sau khi lệnh Quảng bá kết thúc.',
+                  ),
+                ],
+              ],
             ),
           ),
           const SizedBox(height: 16),
@@ -56,94 +81,96 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
           const SizedBox(height: 16),
 
           // Video section row (Thumbnail on the left, multi-line details on the right)
-          isColumn == true ? Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(4.0),
-                child: Image.asset(
-                  isImage == '' ? 'assets/images/avt_chamhoi.jpg' : isImage,
-                  width: 48,
-                  height: 68,
-                  fit: BoxFit.cover,
+          isColumn == true
+              ? Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(4.0),
+                      child: Image.asset(
+                        isImage == ''
+                            ? 'assets/images/avt_chamhoi.jpg'
+                            : isImage,
+                        width: 48,
+                        height: 68,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Lets Go LIVE!',
+                          style: TextStyle(
+                            fontSize: 15.4,
+                            fontWeight: FontWeight.bold,
+                            color: textColor,
+                          ),
+                        ),
+                        const SizedBox(height: 1),
+                        Text(
+                          'LIVE của Hạ Vy Nè',
+                          style: TextStyle(
+                            fontSize: 15.4,
+                            fontFamily: AppFont.sans,
+                            color: subTextColor,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          'Tăng số người xem LIVE',
+                          style: TextStyle(
+                            fontSize: 15.4,
+                            fontFamily: AppFont.sans,
+                            color: subTextColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+              : Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Lets Go LIVE!',
+                          style: TextStyle(
+                            fontSize: 15.4,
+                            fontWeight: FontWeight.bold,
+                            color: textColor,
+                          ),
+                        ),
+                        Text(
+                          'LIVE của Hạ Vy Nè',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontFamily: AppFont.sans,
+                            color: subTextColor,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                      ],
+                    ),
+                    const Spacer(),
+                    Container(
+                      decoration: const BoxDecoration(shape: BoxShape.circle),
+                      child: ClipOval(
+                        child: Image.asset(
+                          isImage == ''
+                              ? 'assets/images/cicrle_ava.jpg'
+                              : isImage,
+                          width: 40,
+                          height: 40,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(width: 12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Lets Go LIVE!',
-                    style: TextStyle(
-                      fontSize: 15.4,
-                      fontWeight: FontWeight.bold,
-                      color: textColor,
-                    ),
-                  ),
-                  const SizedBox(height: 1),
-                  Text(
-                    'LIVE của Hạ Vy Nè',
-                    style: TextStyle(
-                      fontSize: 15.4,
-                      fontFamily: AppFont.sans,
-                      color: subTextColor,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    'Tăng số người xem LIVE',
-                    style: TextStyle(
-                      fontSize: 15.4,
-                      fontFamily: AppFont.sans,
-                      color: subTextColor,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ) : Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Lets Go LIVE!',
-                    style: TextStyle(
-                      fontSize: 15.4,
-                      fontWeight: FontWeight.bold,
-                      color: textColor,
-                    ),
-                  ),
-                  Text(
-                    'LIVE của Hạ Vy Nè',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: AppFont.sans,
-                      color: subTextColor,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                ],
-              ),
-              const Spacer(),
-              Container(
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: ClipOval(
-                  child: Image.asset(
-                    isImage == ''
-                        ? 'assets/images/cicrle_ava.jpg'
-                        : isImage,
-                    width: 40,
-                    height: 40,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ],
-          ),
 
           // Expandable rows (All campaign details are hidden initially and revealed upon tapping "Xem thêm")
           if (_isExpanded) ...[
@@ -250,19 +277,15 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
   Widget _buildRequestIDRow(String label, String value) {
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
     final Color textColor = isDark ? Colors.white : const Color(0xFF161823);
-    final Color subTextColor = isDark ? const Color(0xFF8E8E93) : const Color(0xFF86878B);
-    
+    final Color subTextColor = isDark
+        ? const Color(0xFF8E8E93)
+        : const Color(0xFF86878B);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 15.5,
-            color: subTextColor,
-          ),
-        ),
+        Text(label, style: TextStyle(fontSize: 15.5, color: subTextColor)),
         const SizedBox(width: 24),
         Row(
           mainAxisSize: MainAxisSize.min,
@@ -303,7 +326,9 @@ class _OrderStatusCardState extends State<OrderStatusCard> {
   Widget _buildInfoRow(String label, String value) {
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
     final Color textColor = isDark ? Colors.white : const Color(0xFF161823);
-    final Color subTextColor = isDark ? const Color(0xFF8E8E93) : const Color(0xFF86878B);
+    final Color subTextColor = isDark
+        ? const Color(0xFF8E8E93)
+        : const Color(0xFF86878B);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ResourceCard extends StatelessWidget {
   const ResourceCard({super.key});
@@ -33,7 +34,7 @@ class ResourceCard extends StatelessWidget {
           // Resource List Items
           _buildResourceItem(
             context,
-            icon: Icons.bookmark_add_outlined,
+            svgIcon: 'assets/svg/ic_plus.svg',
             title: 'Thêm lối tắt',
             subtitle: 'Dễ dàng truy cập tính năng Quảng bá từ màn hình chính.',
             onTap: () {
@@ -49,7 +50,7 @@ class ResourceCard extends StatelessWidget {
           const SizedBox(height: 12),
           _buildResourceItem(
             context,
-            icon: Icons.video_collection_outlined,
+            svgIcon: 'assets/svg/ic_play.svg',
             title: 'Tìm hiểu thêm các mẹo',
             subtitle: 'Theo dõi tài khoản chính thức của tính năng Quảng bá để tìm hiểu về các mẹo và tính năng mới nhất.',
             onTap: () {
@@ -63,7 +64,7 @@ class ResourceCard extends StatelessWidget {
 
   Widget _buildResourceItem(
     BuildContext context, {
-    required IconData icon,
+    required String svgIcon,
     required String title,
     required String subtitle,
     required VoidCallback onTap,
@@ -71,7 +72,7 @@ class ResourceCard extends StatelessWidget {
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
     final Color titleColor = isDark ? Colors.white : const Color(0xFF161823);
     final Color subtitleColor = isDark ? const Color(0xFF8E8E93) : const Color(0xFF86878B);
-    final Color iconColor = isDark ? Colors.white : Colors.black;
+    final ColorFilter iconColor = isDark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : const ColorFilter.mode(const Color(0xFF161823), BlendMode.srcIn);
     final Color chevronColor = isDark ? const Color(0xFF8E8E93) : Colors.black;
 
     return InkWell(
@@ -84,10 +85,11 @@ class ResourceCard extends StatelessWidget {
             // Left Custom Icon with a little padding
             Padding(
               padding: const EdgeInsets.only(top: 2.0),
-              child: Icon(
-                icon,
-                size: 20,
-                color: iconColor,
+              child: SvgPicture.asset(
+                svgIcon,
+               width: 20,
+                colorFilter: iconColor,
+
               ),
             ),
             const SizedBox(width: 12),

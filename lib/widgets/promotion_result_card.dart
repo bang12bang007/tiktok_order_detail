@@ -111,111 +111,111 @@ class PromotionResultCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 20),
-          Divider(color: dividerColor, thickness: 1.0, height: 1.0),
-          const SizedBox(height: 20),
+          // const SizedBox(height: 20),
+          // Divider(color: dividerColor, thickness: 1.0, height: 1.0),
+          // const SizedBox(height: 20),
 
           // Dữ liệu tương tác section
-          Row(
-            children: [
-              Text(
-                'Dữ liệu tương tác',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                  color: textColor,
-                ),
-              ),
-              const SizedBox(width: 4),
-              Icon(Icons.info_outline, size: 14, color: subTextColor),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(child: _buildInfoColumn(context, 'Những Follower mới', '34')),
-              Expanded(child: _buildInfoColumn(context, 'Thích', '5091')),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(child: _buildInfoColumn(context, 'Lượt bình luận', '47')),
-              Expanded(child: _buildInfoColumn(context, 'Lượt chia sẻ', '31')),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Divider(color: dividerColor, thickness: 1.0, height: 1.0),
-          const SizedBox(height: 20),
-
-          // Dữ liệu LIVE section
-          Row(
-            children: [
-              Text(
-                'Dữ liệu LIVE',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                  color: textColor,
-                ),
-              ),
-              const SizedBox(width: 4),
-              Icon(Icons.info_outline, size: 14, color: subTextColor),
-            ],
-          ),
-          const SizedBox(height: 16),
+          // Row(
+          //   children: [
+          //     Text(
+          //       'Dữ liệu tương tác',
+          //       style: TextStyle(
+          //         fontSize: 16.0,
+          //         fontWeight: FontWeight.bold,
+          //         color: textColor,
+          //       ),
+          //     ),
+          //     const SizedBox(width: 4),
+          //     Icon(Icons.info_outline, size: 14, color: subTextColor),
+          //   ],
+          // ),
+          // const SizedBox(height: 16),
+          // Row(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: [
+          //     Expanded(child: _buildInfoColumn(context, 'Những Follower mới', '34')),
+          //     Expanded(child: _buildInfoColumn(context, 'Thích', '5091')),
+          //   ],
+          // ),
+          // const SizedBox(height: 16),
+          // Row(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: [
+          //     Expanded(child: _buildInfoColumn(context, 'Lượt bình luận', '47')),
+          //     Expanded(child: _buildInfoColumn(context, 'Lượt chia sẻ', '31')),
+          //   ],
+          // ),
+          // const SizedBox(height: 20),
+          // Divider(color: dividerColor, thickness: 1.0, height: 1.0),
+          // const SizedBox(height: 20),
+          //
+          // // Dữ liệu LIVE section
+          // Row(
+          //   children: [
+          //     Text(
+          //       'Dữ liệu LIVE',
+          //       style: TextStyle(
+          //         fontSize: 16.0,
+          //         fontWeight: FontWeight.bold,
+          //         color: textColor,
+          //       ),
+          //     ),
+          //     const SizedBox(width: 4),
+          //     Icon(Icons.info_outline, size: 14, color: subTextColor),
+          //   ],
+          // ),
+          // const SizedBox(height: 16),
 
           // LIVE metrics row (Significantly increased as requested)
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 5,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Số Lượt hiển thị của phiên \nLIVE',
-                      style: TextStyle(fontSize: 14, color: subTextColor, fontFamily: AppFont.sans),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      '170.869',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: textColor,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 2),
-              Expanded(
-                flex: 5,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '  Thời gian xem trung bình',
-                      style: TextStyle(fontSize: 13.8, color: subTextColor),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      '  5.96 giây',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: textColor,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+          // Row(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: [
+          //     Expanded(
+          //       flex: 5,
+          //       child: Column(
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         children: [
+          //           Text(
+          //             'Số Lượt hiển thị của phiên \nLIVE',
+          //             style: TextStyle(fontSize: 14, color: subTextColor, fontFamily: AppFont.sans),
+          //           ),
+          //           const SizedBox(height: 8),
+          //           Text(
+          //             '170.869',
+          //             style: TextStyle(
+          //               fontSize: 20.0,
+          //               fontWeight: FontWeight.bold,
+          //               color: textColor,
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     ),
+          //     const SizedBox(width: 2),
+          //     Expanded(
+          //       flex: 5,
+          //       child: Column(
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         children: [
+          //           Text(
+          //             '  Thời gian xem trung bình',
+          //             style: TextStyle(fontSize: 13.8, color: subTextColor),
+          //           ),
+          //           const SizedBox(height: 8),
+          //           Text(
+          //             '  5.96 giây',
+          //             style: TextStyle(
+          //               fontSize: 20.0,
+          //               fontWeight: FontWeight.bold,
+          //               color: textColor,
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );

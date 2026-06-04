@@ -1,5 +1,5 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class AudienceInsightCard extends StatefulWidget {
   const AudienceInsightCard({super.key});
@@ -8,36 +8,9 @@ class AudienceInsightCard extends StatefulWidget {
   State<AudienceInsightCard> createState() => _AudienceInsightCardState();
 }
 
-class _AudienceInsightCardState extends State<AudienceInsightCard>
-    with SingleTickerProviderStateMixin {
+class _AudienceInsightCardState extends State<AudienceInsightCard> {
   String _activeTab = 'Giới tính';
   final List<String> _tabs = ['Giới tính', 'Tuổi', 'Mối quan tâm'];
-
-  late AnimationController _animationController;
-  late Animation<double> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1200), // Smooth 1.2s animation
-    );
-    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeOutCubic, // Elegant ease-out motion curve
-      ),
-    );
-    // Start animation on initial load
-    _animationController.forward();
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,28 +51,39 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
 
           // Conditional display based on active tab
           if (_activeTab == 'Giới tính') ...[
-            // Donut Chart Container with smooth AnimatedBuilder circular sweep animation
+            // Beautiful PieChart from fl_chart library
             Center(
               child: SizedBox(
                 width: 180,
                 height: 180,
-                child: AnimatedBuilder(
-                  animation: _animation,
-                  builder: (context, child) {
-                    return CustomPaint(
-                      painter: DonutChartPainter(
-                        malePercentage: 1.0, // 100% Nam
-                        femalePercentage: 0.0, // 0% Nữ
-                        animationValue: _animation.value, // Dynamic animation factor
+                child: PieChart(
+                  PieChartData(
+                    sectionsSpace: 0,
+                    centerSpaceRadius: 55, // Donut hole radius
+                    startDegreeOffset: 270, // Start drawing from the top
+                    sections: [
+                      // Nữ: 24% (Darker Blue)
+                      PieChartSectionData(
+                        color: const Color(0xFF00A2D7),
+                        value: 24,
+                        title: '',
+                        radius: 30,
                       ),
-                    );
-                  },
+                      // Nam: 76% (Lighter Cyan)
+                      PieChartSectionData(
+                        color: const Color(0xFF97E2EF),
+                        value: 76,
+                        title: '', // Do not display titles inside chart segments
+                        radius: 30, // Donut ring width
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
             const SizedBox(height: 24),
 
-            // Symmetric Legends & Percentages Row
+            // Symmetric Legends & Percentages Row matching user screenshot values (76% Nam / 24% Nữ)
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -107,7 +91,7 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
                 Column(
                   children: [
                     Text(
-                      '100%',
+                      '76%',
                       style: TextStyle(
                         fontSize: 22.0,
                         fontWeight: FontWeight.bold,
@@ -143,7 +127,7 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
                 Column(
                   children: [
                     Text(
-                      '0%',
+                      '24%',
                       style: TextStyle(
                         fontSize: 22.0,
                         fontWeight: FontWeight.bold,
@@ -305,11 +289,6 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
       onTap: () {
         setState(() {
           _activeTab = tabName;
-          if (_activeTab == 'Giới tính') {
-            // Reset and trigger circle draw animation whenever "Giới tính" tab is opened
-            _animationController.reset();
-            _animationController.forward();
-          }
         });
       },
       child: Container(
@@ -336,67 +315,5 @@ class _AudienceInsightCardState extends State<AudienceInsightCard>
         ),
       ),
     );
-  }
-}
-
-class DonutChartPainter extends CustomPainter {
-  final double malePercentage;
-  final double femalePercentage;
-  final double animationValue; // Animation factor from 0.0 to 1.0
-
-  DonutChartPainter({
-    required this.malePercentage,
-    required this.femalePercentage,
-    required this.animationValue,
-  });
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final center = Offset(size.width / 2, size.height / 2);
-    final radius = min(size.width / 2, size.height / 2);
-    final strokeWidth = radius * 0.35; // Precise donut ring width
-
-    final paintMale = Paint()
-      ..color = const Color(0xFF97E2EF) // Light Cyan
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth
-      ..strokeCap = StrokeCap.square;
-
-    final paintFemale = Paint()
-      ..color = const Color(0xFF00A2D7) // Darker Blue
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth
-      ..strokeCap = StrokeCap.square;
-
-    // Apply animation factor to sweep angles
-    final double femaleSweep = 2 * pi * femalePercentage * animationValue;
-    final double maleSweep = 2 * pi * malePercentage * animationValue;
-
-    if (femalePercentage > 0.0) {
-      canvas.drawArc(
-        Rect.fromCircle(center: center, radius: radius - strokeWidth / 2),
-        -pi / 2,
-        femaleSweep,
-        false,
-        paintFemale,
-      );
-    }
-
-    if (malePercentage > 0.0) {
-      canvas.drawArc(
-        Rect.fromCircle(center: center, radius: radius - strokeWidth / 2),
-        -pi / 2 + (2 * pi * femalePercentage * animationValue), // Synchronized start angle
-        maleSweep,
-        false,
-        paintMale,
-      );
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant DonutChartPainter oldDelegate) {
-    return oldDelegate.malePercentage != malePercentage ||
-        oldDelegate.femalePercentage != femalePercentage ||
-        oldDelegate.animationValue != animationValue;
   }
 }
