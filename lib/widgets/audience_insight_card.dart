@@ -33,12 +33,12 @@ class _AudienceInsightCardState extends State<AudienceInsightCard> {
           Text(
             'Thông tin chuyên sâu về đối tượng khán giả',
             style: TextStyle(
-              fontSize: 16.0,
+              fontSize: 16.5,
               fontWeight: FontWeight.bold,
               color: textColor,
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 14),
 
           // Horizontal Tab Bar (Segmented control)
           SingleChildScrollView(
@@ -94,7 +94,7 @@ class _AudienceInsightCardState extends State<AudienceInsightCard> {
                       '76%',
                       style: TextStyle(
                         fontSize: 22.0,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w500,
                         color: textColor,
                       ),
                     ),
@@ -114,7 +114,7 @@ class _AudienceInsightCardState extends State<AudienceInsightCard> {
                         Text(
                           'Nam',
                           style: TextStyle(
-                            fontSize: 12.0,
+                            fontSize: 14.0,
                             color: subTextColor,
                             fontWeight: FontWeight.w400,
                           ),
@@ -130,7 +130,7 @@ class _AudienceInsightCardState extends State<AudienceInsightCard> {
                       '24%',
                       style: TextStyle(
                         fontSize: 22.0,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w500,
                         color: textColor,
                       ),
                     ),
@@ -150,7 +150,7 @@ class _AudienceInsightCardState extends State<AudienceInsightCard> {
                         Text(
                           'Nữ',
                           style: TextStyle(
-                            fontSize: 12.0,
+                            fontSize: 14.0,
                             color: subTextColor,
                             fontWeight: FontWeight.w400,
                           ),
@@ -163,7 +163,7 @@ class _AudienceInsightCardState extends State<AudienceInsightCard> {
             ),
           ] else if (_activeTab == 'Tuổi') ...[
             // Age vertical horizontal bars list
-            const SizedBox(height: 12),
+            const SizedBox(height: 2),
             _buildHorizontalProgressBarRow(context, '13-17', 0.34),
             const SizedBox(height: 16),
             _buildHorizontalProgressBarRow(context, '18-24', 0.20),
@@ -177,19 +177,19 @@ class _AudienceInsightCardState extends State<AudienceInsightCard> {
             _buildHorizontalProgressBarRow(context, '55+', 0.00),
           ] else if (_activeTab == 'Mối quan tâm') ...[
             // Interests vertical list
-            const SizedBox(height: 12),
-            _buildHorizontalProgressBarRow(context, 'Trò chơi', 0.06),
+            const SizedBox(height: 2),
+            _buildHorizontalProgressBarRow(context, 'Trò chơi', 0.32),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow(context, 'Tin tức và Giải trí', 0.06),
+            _buildHorizontalProgressBarRow(context, 'Đời sống', 0.17),
             const SizedBox(height: 16),
             _buildHorizontalProgressBarRow(context, 'Thực phẩm và Đồ uống', 0.06),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow(context, 'Các ứng dụng', 0.06),
+            _buildHorizontalProgressBarRow(context, 'Các ứng dụng', 0.11),
             const SizedBox(height: 16),
-            _buildHorizontalProgressBarRow(context, 'Trang phục & Phụ kiện', 0.06),
+            _buildHorizontalProgressBarRow(context, 'Trang phục & Phụ kiện', 0.13),
             const SizedBox(height: 20),
-            Divider(color: dividerColor, thickness: 1.0, height: 1.0),
-            const SizedBox(height: 12),
+            //Divider(color: dividerColor, thickness: 1.0, height: 1.0),
+            const SizedBox(height: 4),
             // Center "Xem thêm ⋁" button
             Center(
               child: InkWell(
@@ -197,14 +197,14 @@ class _AudienceInsightCardState extends State<AudienceInsightCard> {
                   // Xem thêm action
                 },
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
                         'Xem thêm',
                         style: TextStyle(
-                          fontSize: 12.0,
+                          fontSize: 15.5,
                           fontWeight: FontWeight.w500,
                           color: subTextColor,
                         ),
@@ -242,9 +242,9 @@ class _AudienceInsightCardState extends State<AudienceInsightCard> {
             Text(
               label,
               style: TextStyle(
-                fontSize: 14.0,
+                fontSize: 15.4,
                 color: textColor, // Black/White text
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.w500,
               ),
             ),
             Text(
@@ -261,10 +261,10 @@ class _AudienceInsightCardState extends State<AudienceInsightCard> {
         // Horizontal bar
         Container(
           width: double.infinity,
-          height: 8.0,
+          height: 9.7,
           decoration: BoxDecoration(
             color: barBgColor, // Light grey/dark background bar
-            borderRadius: BorderRadius.circular(4.0),
+            borderRadius: BorderRadius.circular(5.0),
           ),
           alignment: Alignment.centerLeft,
           child: FractionallySizedBox(
@@ -306,7 +306,7 @@ class _AudienceInsightCardState extends State<AudienceInsightCard> {
         child: Text(
           tabName,
           style: TextStyle(
-            fontSize: 12.0,
+            fontSize: 13.4,
             fontWeight: isActive ? FontWeight.bold : FontWeight.w500,
             color: isActive
                 ? (isDark ? Colors.white : const Color(0xFF161823))

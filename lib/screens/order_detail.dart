@@ -94,7 +94,7 @@ class _OrderDetailState extends State<OrderDetail> {
                       ),
                       child: ClipOval(
                         child: SvgPicture.asset(
-                          'assets/svg/ic_user.svg',
+                          'assets/svg/ic_user.svg', // icon user
                           colorFilter: ColorFilter.mode(
                             isDark ? Colors.white : const Color(0xFF161823),
                             BlendMode.srcIn,
@@ -166,9 +166,9 @@ class _OrderDetailState extends State<OrderDetail> {
                     children: const [
                       OrderStatusCard(),
                       // 2 dòng trên này nha :v
-                      // SizedBox(height: 12),
-                      // AdManagerIntegrationCard(),
-                      SizedBox(height: 12),
+                       //SizedBox(height: 10),
+                       //AdManagerIntegrationCard(),
+                      SizedBox(height: 10),
                       PromotionResultCard(),
                       SizedBox(height: 12),
                       // ContentAnalysisCard(),
