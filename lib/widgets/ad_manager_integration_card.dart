@@ -23,23 +23,23 @@ class AdManagerIntegrationCard extends StatelessWidget {
           Text(
             'Tích hợp với Trình quản lý Quảng cáo',
             style: TextStyle(
-              fontSize: 16.0,
+              fontSize: 17.0,
               fontWeight: FontWeight.bold,
               color: textColor,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 4),
 
           // Subtitle / Description
           Text(
             'Mở khóa các chức năng nhắm mục tiêu mở rộng và tiết kiệm thời gian chỉ bằng một lần đăng nhập.',
             style: TextStyle(
-              fontSize: 14.0,
+              fontSize: 14.8,
               color: descriptionColor, // Crisp, readable grey color
               height: 1.4,
             ),
           ),
-          const SizedBox(height: 14),
+          const SizedBox(height: 7),
 
           // Interactive 'Bắt đầu >' Link/Button
           InkWell(
@@ -52,7 +52,7 @@ class AdManagerIntegrationCard extends StatelessWidget {
                 Text(
                   'Bắt đầu',
                   style: TextStyle(
-                    fontSize: 14.0,
+                    fontSize: 15.8,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFFFE2C55), // Brand primary pink/red
                   ),

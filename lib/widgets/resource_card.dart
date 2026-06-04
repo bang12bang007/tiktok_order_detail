@@ -23,7 +23,7 @@ class ResourceCard extends StatelessWidget {
           Text(
             'Tài nguyên',
             style: TextStyle(
-              fontSize: 16.0,
+              fontSize: 17.6,
               fontWeight: FontWeight.bold,
               color: textColor,
             ),
@@ -40,13 +40,13 @@ class ResourceCard extends StatelessWidget {
               // Action to add shortcut
             },
           ),
-          const SizedBox(height: 12),
-          Divider(
-            color: dividerColor,
-            thickness: 1.0,
-            height: 1.0,
-          ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 15),
+          //Divider(
+            //color: dividerColor,
+           // thickness: 0.0,
+           // height: 0.0,
+          //),
+          const SizedBox(height: 11),
           _buildResourceItem(
             context,
             icon: Icons.video_collection_outlined,
@@ -86,7 +86,7 @@ class ResourceCard extends StatelessWidget {
               padding: const EdgeInsets.only(top: 2.0),
               child: Icon(
                 icon,
-                size: 20,
+                size: 25,
                 color: iconColor,
               ),
             ),
@@ -100,7 +100,7 @@ class ResourceCard extends StatelessWidget {
                   Text(
                     title,
                     style: TextStyle(
-                      fontSize: 16.0,
+                      fontSize: 17.4,
                       fontWeight: FontWeight.bold,
                       color: titleColor,
                     ),
@@ -109,15 +109,15 @@ class ResourceCard extends StatelessWidget {
                   Text(
                     subtitle,
                     style: TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 15,
                       color: subtitleColor,
-                      height: 1.4,
+                      height: 1.2,
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 9),
 
             // Right Chevron Arrow
             Padding(

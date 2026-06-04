@@ -68,6 +68,10 @@ flutter:
     - assets/images/mabu_295.jpg
     - assets/images/cicrle_ava.jpg
     - assets/svg/ic_user.svg
+    - assets/svg/ic_user_outline.svg
+    - assets/images/bangvip2025.jpg
+    - assets/images/mabu2.jpeg
+    - assets/images/queanhlive.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
